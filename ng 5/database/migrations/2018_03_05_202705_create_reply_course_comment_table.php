@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserTable extends Migration
+class CreateReplyCourseCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('photo')->default('./profile.png');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('reply_course_comment', function (Blueprint $table) {
+            $table->integer('lecture_id');
+            $table->integer('user_id');
+            $table->integer('comment_id');
+            $table->string('reply');
+            $table->primary(['comment_id','user_id']);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('reply_course_comment');
     }
 }

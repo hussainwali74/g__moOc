@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('user_id');
             $table->string('course_id')->nullable();
             $table->string('lecture_id')->nullable();
-            $table->text('about');
+            $table->text('about')->nullable();
             $table->string('city',64);
              
             // $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');

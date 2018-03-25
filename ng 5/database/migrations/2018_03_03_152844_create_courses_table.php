@@ -17,16 +17,12 @@ class CreateCoursesTable extends Migration
             $table->increments('id');
             $table->string('student_id')->nullable();
             $table->string('tutor_id')->nullable();
-            $table->string('level')->default('Beginner');
-            $table->string('language')->default('English');
+            $table->enum('level',['Beginner,Intermediate, Expert,All']);
+            $table->enum('language',['English','Urdu']);
             $table->integer('price')->default(0);
             $table->string('title');
             $table->longText('description');
-            $table->integer('total_lectures')->default(0);
-            $table->integer('duration')->default(0);
             $table->string('photo')->nullable();
-            $table->string('category')->nullable();
-            $table->integer('rating')->default(0);            
             $table->timestamps();
         });
     }

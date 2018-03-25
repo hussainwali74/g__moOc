@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Tymon\JWTAuth\Exceptions\JWTException;
-USE Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -19,14 +19,13 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->Input('name');
-        $user->email = $request->Input('email');
-        $user->user_type = "not yet";
+        $user->email = $request->Input('email'); 
+        $user->photo = "./profile.png";
         $user->password = bcrypt($request->Input('password'));
         $user->save();
-        // $response = array('response'=>'user created', 'success'=> true);
-        // return $response;
         return response()->json(['message'=>"user created"],201);
     }
+    
     public function signin(Request $request){
         $this->validate($request,[
             'email'=>'required|email',

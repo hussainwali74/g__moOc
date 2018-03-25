@@ -21,6 +21,12 @@ class User extends Authenticatable
     public function admin(){
         return $this->hasOne('App\Admin');
     }
+    public function tutor(){
+        return $this->hasOne('App\Tutor');
+    }
+    public function student(){
+        return $this->hasOne('App\Student');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

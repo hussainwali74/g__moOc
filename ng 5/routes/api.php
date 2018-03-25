@@ -31,10 +31,15 @@ Route::delete('/quote/{id}',[
     'middleware'=>'jwtauth'
 ]);
 
-Route::post('/user',[
+Route::post('/register',[
     'uses'=>'UserController@signup'
 ]);
 Route::post('/signin',[
     'uses'=>'UserController@signin'
 ]);
- 
+Route::post('/tutor/signup',[
+    'uses'=>'TutorController@setTutor'
+]);
+Route::post('/tutor/user',[
+    'uses'=>'TutorController@getUser'
+]);
