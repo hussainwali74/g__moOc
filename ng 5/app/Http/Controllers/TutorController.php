@@ -12,6 +12,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class TutorController extends Controller
 {
     public function setTutor(Request $request){
+
+        // registering a user as a tutor
+        
         $this->validate($request,[
             'user_id'=>'required',
             'about'=>'required',
@@ -27,10 +30,19 @@ class TutorController extends Controller
         return response()->json(['message'=>"tutor created"]);
     }    
 
-    public function getUser(){
- 
-        $user = Tutor::find(1)->user;
+    public function getUser(Request $request, $id){
         
-        return response()->json(['user'=>$user],200);
+        try{
+            // here we are getting the user details of the tutor
+            $user = Tutor::findOrFail($id)->user ;
+            return response()->json(['user'=>$user],200);
+        }
+        catch(Illuminate\Database\QueryException $e){
+            $error_code = $e->errorInfo[1];
+            return response()->json(['error'=>'User is not a Tutor',$error_code]);
+ 
+        }
+
+        
     }
 }

@@ -6,9 +6,12 @@ use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 use Response;
 class Handler extends ExceptionHandler
 {
+ 
     /**
      * A list of the exception types that are not reported.
      *
@@ -50,7 +53,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceof TokenExpiredException ){
+        if ($exception instanceof NotFoundHttpException){
+            return response('Resource not found', 404);
+        }
+        
+
+        if ($exception instanceof NotFoundHttpException){
+            return Response::json(["message"=>'Resource not found'], $exception->getStatusCode());
+        }
+        else if($exception instanceof TokenExpiredException ){
             return Response::json(['error'=>'error: token expired'],$exception->getStatusCode());
         }else if($exception instanceof TokenInvalidException){
             return Response::json(['error'=>'error: Invalid token'], $exception->getStatusCode());

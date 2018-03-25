@@ -40,6 +40,6 @@ Route::post('/signin',[
 Route::post('/tutor/signup',[
     'uses'=>'TutorController@setTutor'
 ]);
-Route::post('/tutor/user',[
+Route::get('/tutor/{id}',[
     'uses'=>'TutorController@getUser'
 ]);

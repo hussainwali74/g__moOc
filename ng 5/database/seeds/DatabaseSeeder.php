@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use UsersTableSeeder;
+// use UsersTableSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -10,7 +10,13 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $this->call(UsersTableSeeder::class);
+    { 
+        factory(App\User::class,10)->create();
+        // DB::table('users')->insert([
+        //     'name' => str_random(10),
+        //     'photo' => str_random(10).'.png',
+        //     'email' => str_random(10).'@gmail.com',
+        //     'password' => bcrypt('hussain')
+        // ]);
     }
 }
