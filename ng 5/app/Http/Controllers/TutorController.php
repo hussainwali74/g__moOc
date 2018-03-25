@@ -26,9 +26,11 @@ class TutorController extends Controller
         $tutor->save();
         return response()->json(['message'=>"tutor created"]);
     }    
+
     public function getUser(){
  
         $user = Tutor::find(1)->user;
+        
         return response()->json(['user'=>$user],200);
     }
 }

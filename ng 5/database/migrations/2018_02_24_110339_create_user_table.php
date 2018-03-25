@@ -16,7 +16,7 @@ class CreateUserTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('photo')->default('./profile.png');
+            $table->string('photo');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
@@ -31,6 +31,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('users');
     }
 }
