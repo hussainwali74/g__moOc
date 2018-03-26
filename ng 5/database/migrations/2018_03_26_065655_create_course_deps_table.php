@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCourseDepTutorTable extends Migration
+class CreateCourseDepsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateCourseDepTutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_dep_tutor', function (Blueprint $table) {
-            
+        Schema::create('course_deps', function (Blueprint $table) {
             $table->integer('course_id');
-            $table->integer('tutor_id');
             $table->integer('no_of_lectures');
             $table->integer('duration');
             $table->string('category');
             $table->string('subcategory');
-            $table->primary(['course_id','tutor_id']);
+            $table->primary(['course_id']);
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateCourseDepTutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_dep_tutor');
+        Schema::dropIfExists('_course__deps_');
     }
 }

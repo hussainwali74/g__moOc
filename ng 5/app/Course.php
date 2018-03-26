@@ -31,7 +31,13 @@ class Course extends Authenticatable
     //this will give all the lectures in the course
     public function lectures()
     {
-        return $this->hasMany('Lectures');
+        return $this->hasMany('App\Lectures');
+    }
+
+    //course dependencies
+    public function course_deps()
+    {   
+        return $this->hasOne('App\Course_Deps','course_id');
     }
     /**
      * The attributes that should be hidden for arrays.

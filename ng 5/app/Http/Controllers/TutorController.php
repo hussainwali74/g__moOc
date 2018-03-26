@@ -41,7 +41,13 @@ class TutorController extends Controller
             $error_code = $e->errorInfo[1];
             return response()->json(['error'=>'User is not a Tutor',$error_code]);
         }
-
         
+    }
+
+    //get the courses taught by this tutor
+    public function getCourses(Request $request, $id)
+    {
+        $courses = Tutor::find($id)->courses;
+        return response()->json(['courses' => $courses], 200);
     }
 }

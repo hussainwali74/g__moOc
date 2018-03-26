@@ -40,23 +40,38 @@ Route::post('/signin',[
 Route::post('/tutor/signup',[
     'uses'=>'TutorController@setTutor'
 ]);
+//get the user given tutor's id
 Route::get('/tutor/{id}',[
     'uses'=>'TutorController@getUser'
 ]);
+// retrieve courses taught by a tutor given his id
+Route::get('/tutor/courses/{id}',[
+    'uses' => 'TutorController@getCourses'
+]);
+
 
 // create a course
-Route::post('/tutor/course/create',[
+Route::post('/course/create',[
     'uses' => 'CourseController@createCourse'
 ]);
-// retrieve a course by id
-Route::get('/tutor/course/{id}',[
+
+// get a course by id
+Route::get('/course/{id}',[
     'uses' => 'CourseController@getCourse'
 ]);
 // delete a course by id
-Route::delete('/tutor/course/delete/{id}',[
+Route::delete('/course/delete/{id}',[
     'uses' => 'CourseController@deleteCourse'
 ]);
 //get the tutor of a course
-Route::get('/course/{id}',[
+Route::get('/course-tutor/{id}',[
     'uses' => 'CourseController@courseTutor'
+]);
+//insert course dependencies
+Route::post('/course/insertdependencies',[
+    'uses' => 'CourseController@createCourseDeps'
+]);
+//Get course dependencies
+Route::get('/course/dependencies/{id}',[
+    'uses' => 'CourseController@getCourseDeps'
 ]);
