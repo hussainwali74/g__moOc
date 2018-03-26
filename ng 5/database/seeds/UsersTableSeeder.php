@@ -11,11 +11,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => str_random(10),
-            'photo' => str_random(10).'.png',
-            'email' => str_random(10).'@gmail.com',
-            'password' => bcrypt('hussain')
-        ]);
+       $faker = Faker\Factory::create();
+       for($i = 0; $i<10; $i++){
+            $user = User::create(array(
+                'name' => $faker->name(),
+                'photo' => $faker->name().'.png',
+                'email' => $faker->name().'@gmail.com',
+                'password' => bcrypt('hussain')
+            ));
+       }
     }
 }

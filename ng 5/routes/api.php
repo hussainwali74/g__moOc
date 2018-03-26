@@ -28,7 +28,7 @@ Route::put('/quote/{id}',[
 ]);
 Route::delete('/quote/{id}',[
     'uses'=>'QuoteController@deleteQuote',
-    'middleware'=>'jwtauth'
+    // 'middleware'=>'jwtauth'
 ]);
 
 Route::post('/register',[
@@ -42,4 +42,21 @@ Route::post('/tutor/signup',[
 ]);
 Route::get('/tutor/{id}',[
     'uses'=>'TutorController@getUser'
+]);
+
+// create a course
+Route::post('/tutor/course/create',[
+    'uses' => 'CourseController@createCourse'
+]);
+// retrieve a course by id
+Route::get('/tutor/course/{id}',[
+    'uses' => 'CourseController@getCourse'
+]);
+// delete a course by id
+Route::delete('/tutor/course/delete/{id}',[
+    'uses' => 'CourseController@deleteCourse'
+]);
+//get the tutor of a course
+Route::get('/course/{id}',[
+    'uses' => 'CourseController@courseTutor'
 ]);

@@ -15,10 +15,9 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('student_id')->nullable();
             $table->string('tutor_id')->nullable();
-            $table->enum('level',['Beginner,Intermediate, Expert,All']);
-            $table->enum('language',['English','Urdu']);
+            $table->enum('level',['Beginner','Intermediate', 'Expert','All'])->default('Beginner');
+            $table->enum('language',['English','Urdu'])->default('English');
             $table->integer('price')->default(0);
             $table->string('title');
             $table->longText('description');

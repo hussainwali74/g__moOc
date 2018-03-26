@@ -54,19 +54,22 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof NotFoundHttpException){
-            return response('Resource not found', 404);
-        }
-        
 
-        if ($exception instanceof NotFoundHttpException){
             return Response::json(["message"=>'Resource not found'], $exception->getStatusCode());
+            
         }
         else if($exception instanceof TokenExpiredException ){
+
             return Response::json(['error'=>'error: token expired'],$exception->getStatusCode());
+
         }else if($exception instanceof TokenInvalidException){
+
             return Response::json(['error'=>'error: Invalid token'], $exception->getStatusCode());
+
         }else if($exception instanceof JWTException){
+
             return Response::json(['error'=>'error: error fetching token'],$exception->getStatusCode());
+
         }
 
         return parent::render($request, $exception);

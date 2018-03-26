@@ -27,20 +27,19 @@ class TutorController extends Controller
         $tutor->city = $request->Input('city');
         $tutor->institution = $request->Input('institution');
         $tutor->save();
-        return response()->json(['message'=>"tutor created"]);
+        return response()->json(['message'=>"tutor created"],200);
     }    
 
     public function getUser(Request $request, $id){
         
         try{
             // here we are getting the user details of the tutor
-            $user = Tutor::findOrFail($id)->user ;
+            $user = Tutor::findOrFail($id)->user;
             return response()->json(['user'=>$user],200);
         }
         catch(Illuminate\Database\QueryException $e){
             $error_code = $e->errorInfo[1];
             return response()->json(['error'=>'User is not a Tutor',$error_code]);
- 
         }
 
         
