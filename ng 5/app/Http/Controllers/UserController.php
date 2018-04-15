@@ -19,6 +19,7 @@ class UserController extends Controller
 
         $user = new User;
         $user->name = $request->Input('name');
+        $user->username = $request->Input('username');
         $user->email = $request->Input('email'); 
         $user->photo = "./profile.png";
         $user->password = bcrypt($request->Input('password'));
@@ -42,6 +43,12 @@ class UserController extends Controller
         $user = User::where('email',$request->Input('email'))->get();
 
         return response()->json(['token'=>$token,'user'=>$user],200);
+    }
+    public function getUserData(Request $request)
+    {
+        $user = JWTAuth::parseToken()->toUser();
+        return response()->json(['user' => $user],200);
+
     }
     
 

@@ -16,12 +16,8 @@ class CreateTutorsTable extends Migration
         Schema::create('tutors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-
-            // $table->foreign('user_id')->references('id')->on('users');
-
             $table->text('about')->nullable();
-            $table->string('city',64)->nullable();
-            $table->string('institution');
+            $table->string('institution')->nullable();
             $table->timestamps();
         });
     }

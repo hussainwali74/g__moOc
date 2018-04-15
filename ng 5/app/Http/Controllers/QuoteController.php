@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Quote;
 use JWTAuth;
 use Illuminate\Http\Request;
+use App\User;
 
 class QuoteController extends Controller
 {
@@ -43,4 +44,5 @@ class QuoteController extends Controller
         $quote->delete();
         return response()->json(['message'=> 'Quote deleted'],201);
     }
+
 }

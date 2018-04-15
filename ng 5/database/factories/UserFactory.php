@@ -42,3 +42,11 @@ $factory->define(App\Course::class, function (Faker $faker) {
         'photo' => $faker->name.'.png',
     ];
 });
+
+$factory->define(App\Student::class, function (Faker $faker) {
+    return [
+        'user_id'=>$faker->numberBetween( $min = 1, $max = 10),
+        'about' => $faker->realText( $maxNbChars = 50),
+        'city' => $faker->city()
+    ];
+});

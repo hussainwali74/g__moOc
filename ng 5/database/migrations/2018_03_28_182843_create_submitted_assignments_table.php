@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLecturesTable extends Migration
+class CreateSubmittedAssignmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateLecturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lectures', function (Blueprint $table) {
+        Schema::create('submitted_assignments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',200);
-            $table->text('description');
-            $table->string('video')->nullable();
-            $table->string('pdf')->nullable();
+            $table->integer('assignment_id');
+            $table->integer('student_id');
+            $table->string('file');
             $table->timestamps();
-        });    
+        });
     }
 
     /**
@@ -30,6 +29,6 @@ class CreateLecturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lectures');
+        Schema::dropIfExists('submitted_assignments');
     }
 }

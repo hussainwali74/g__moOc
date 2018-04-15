@@ -17,7 +17,7 @@ class CreateCommentLectureTable extends Migration
             $table->increments('id');
             $table->integer('lecture_id');
             $table->integer('user_id');
-            $table->string('comment'); 
+            $table->longText('comment'); 
             $table->timestamps();
         });
     }

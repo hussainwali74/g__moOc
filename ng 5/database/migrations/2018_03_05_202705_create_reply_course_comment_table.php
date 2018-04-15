@@ -17,7 +17,7 @@ class CreateReplyCourseCommentTable extends Migration
             $table->integer('lecture_id');
             $table->integer('user_id');
             $table->integer('comment_id');
-            $table->string('reply');
+            $table->Text('reply');
             $table->primary(['comment_id','user_id']);
             $table->timestamps();
         });

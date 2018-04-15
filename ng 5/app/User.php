@@ -38,6 +38,13 @@ class User extends Authenticatable
     
     }
 
+    //this user has many comments on a course
+    public function comment_on_course(){
+    
+        return $this->hasMany('App\Comment_Course','user_id');
+    
+    }
+
 
     /**
      * The attributes that should be hidden for arrays.

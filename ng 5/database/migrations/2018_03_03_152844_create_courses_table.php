@@ -15,13 +15,13 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tutor_id')->nullable();
-            $table->enum('level',['Beginner','Intermediate', 'Expert','All'])->default('Beginner');
-            $table->enum('language',['English','Urdu'])->default('English');
-            
-            $table->integer('price')->default(0);
+            $table->integer('tutor_id');
+            $table->string('level')->nullable()->default('Beginner');
+            $table->enum('language',['English','Urdu'])->nullable()->default('English');
+            $table->integer('price')->nullable()->default(0);
             $table->string('title');
-            $table->longText('description');
+            $table->string('subtitle')->nullable();
+            $table->text('description')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();
         });

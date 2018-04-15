@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Tutor;
+use App\User;
 
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -14,21 +15,25 @@ class TutorController extends Controller
     public function setTutor(Request $request){
 
         // registering a user as a tutor
-        
-        $this->validate($request,[
-            'user_id'=>'required',
-            'about'=>'required',
-            'city'=>'required',
-            'institution'=>'required'
-        ]);
+
+        $user_id = JWTAuth::parseToken()->toUser()->id;
+ 
         $tutor = new Tutor;
-        $tutor->user_id = $request->Input('user_id');
+        $tutor->user_id = $user_id;
         $tutor->about = $request->Input('about');
-        $tutor->city = $request->Input('city');
         $tutor->institution = $request->Input('institution');
         $tutor->save();
-        return response()->json(['message'=>"tutor created"],200);
-    }    
+        return response()->json(['message'=>"tutor created",'user' => $user_id],200);
+    }   
+    // get last inserted id 
+    public function getTutor_id(Request $request){
+
+        $user_id = JWTAuth::parseToken()->toUser()->id;
+        $tutor = User::findOrFail($user_id)->tutor; 
+        $tutor_id = $tutor->id;
+
+        return response()->json(['tutor_id',$tutor_id],200);
+    }
 
     public function getUser(Request $request, $id){
         

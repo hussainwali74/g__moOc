@@ -18,7 +18,7 @@ class CreateCommentAssignmentTable extends Migration
             $table->integer('assignment_id');
             $table->integer('user_id');
             $table->integer('lecture_id');
-            $table->string('comment');
+            $table->Text('comment');
             $table->timestamps();
         });
     }

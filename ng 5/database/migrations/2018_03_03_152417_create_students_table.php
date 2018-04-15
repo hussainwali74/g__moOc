@@ -16,13 +16,9 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('course_id')->nullable();
-            $table->string('lecture_id')->nullable();
             $table->text('about')->nullable();
             $table->string('city',64);
-             
-            // $table->foreign('tutor_id')->references('id')->on('tutors')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }

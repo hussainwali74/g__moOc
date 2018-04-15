@@ -15,10 +15,16 @@ class CreateCourseDepsTable extends Migration
     {
         Schema::create('course_deps', function (Blueprint $table) {
             $table->integer('course_id');
-            $table->integer('no_of_lectures');
-            $table->integer('duration');
-            $table->string('category');
-            $table->string('subcategory');
+            $table->integer('no_of_lectures')->nullable();
+            // any previous knowledge 
+            $table->text('pre_requisites')->nullable();
+            $table->text('audience')->nullable();
+            $table->text('expectations')->nullable();
+            $table->text('summary')->nullable();
+            $table->text('message')->nullable();
+            $table->integer('duration')->nullable();
+            $table->string('category')->nullable();
+            $table->string('subcategory')->nullable();
             $table->primary(['course_id']);
             $table->timestamps();
         });

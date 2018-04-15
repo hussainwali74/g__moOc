@@ -17,7 +17,7 @@ class CreateCommentCourseTable extends Migration
             $table->increments('id');
             $table->integer('course_id');
             $table->integer('user_id');
-            $table->string('comment'); 
+            $table->Text('comment'); 
             $table->timestamps();
         });
     }
