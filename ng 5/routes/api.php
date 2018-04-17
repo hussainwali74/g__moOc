@@ -101,6 +101,7 @@ Route::get('/course-tutor/{id}',[
     'uses' => 'CourseController@courseTutor'
 ]);
 
+
 //***************Course_Deps                  */
 //insert course dependencies
 Route::post('/course/insertdependencies',[
@@ -165,9 +166,15 @@ Route::get('/course_comment/user/{id}',[
 
 //**           Lectures           ** */
 //********************************* */
+
 //create a new lecture
 Route::post('/lecture/create',[
     'uses' => 'LectureController@createLecture'
+]);
+
+//add lecture content
+Route::post('/lecture/addcontent',[
+    'uses' => 'LectureController@addContent'
 ]);
 
 //update a  lecture given its her
